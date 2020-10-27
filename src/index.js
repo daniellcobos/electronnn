@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 var ipc = require('electron').ipcRenderer;
+const Sequelize = require('sequelize')
+const sequelize = require('./database.js')
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
@@ -58,4 +60,9 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 ipcMain.on('windows',function() {createSecondWindow()})
 ipcMain.on('windows2',function() {console.log(BrowserWindow.fromId(2).id)})
-
+ipcMain.on('database', async function() {try {
+  await sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}})
