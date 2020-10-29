@@ -32,9 +32,23 @@ const createSecondWindow = () => {
     parent: mainw
   });
   secondWindow.loadFile(path.join(__dirname, 'ondex.html'));
-  console.log(secondWindow.id)
+  
 }
 
+const createThirdWindow = () => {
+  const mainw = BrowserWindow.fromId(1)
+  const thirdWindow = new BrowserWindow({
+    width: 800,
+    height: 400,
+    webPreferences: { nodeIntegration: true },
+    parent: mainw,
+    backgroundColor: 'white'
+  });
+  wc = thirdWindow.webContents
+  thirdWindow.loadFile(path.join(__dirname, 'undex.html'));
+  wc.once('dom-ready', () => {testthing.findAll().then(args => wc.send('window3',args)).catch(err => console.log(err)) }) 
+  
+}
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -56,11 +70,21 @@ app.on('activate', () => {
     createWindow();
   }
 });
+// Database Handlers
+
+createTest = function(descr){
+  testthing.create({
+    desc: descr
+  })
+  .then(result => console.log(result))
+  .catch(err => console.log(err))
+}
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 ipcMain.on('windows',function() {createSecondWindow()})
-ipcMain.on('windows2',function() {console.log(BrowserWindow.fromId(2).id)})
+ipcMain.on('windows2',function() {createThirdWindow()})
+ipcMain.on('form',(e,args) => {createTest(args)})
 ipcMain.on('database', function() {try {
   
   sequelize.sync()
@@ -74,3 +98,4 @@ ipcMain.on('database', function() {try {
 } catch (error) {
   console.error('Unable to connect to the database:', error);
 }})
+

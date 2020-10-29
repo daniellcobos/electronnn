@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcRenderer } = require('electron');
+const { app, ipcRenderer } = require('electron');
 var ipc = require('electron').ipcRenderer;
 
 document.getElementById('add').addEventListener('click', () => {

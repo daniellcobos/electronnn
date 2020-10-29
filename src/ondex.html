@@ -8,8 +8,14 @@
 <body>
     <div> <h1>Segunda Ventana</h1> </div>
     
-    <button id='charge'>charge</button>
+    <form>
+        <label for="desc">Descripcion</label><br>
+        <input type="text" id="desc" name="desc" value="Desc"><br>
+        
+      </form> 
+      <button id='charge'> Enviar </button>
     <button id='test'> test </button>
+
     <script>
         // You can also require other files to run in this process
         require('./renderer2.js')
