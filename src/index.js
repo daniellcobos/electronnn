@@ -98,4 +98,10 @@ ipcMain.on('database', function() {try {
 } catch (error) {
   console.error('Unable to connect to the database:', error);
 }})
-
+ipcMain.on('editdatabase',(e,id,value) => {testthing.findByPk(id)
+  .then((thing) => {
+    thing.desc = value
+    return thing.save()} 
+      ).then(result => console.log(result)).catch(err => console.log(err))
+    }
+  )
