@@ -31,6 +31,7 @@ const createSecondWindow = () => {
     height: 300,
     webPreferences: { nodeIntegration: true },
     parent: mainw,
+    backgroundColor: "white",
   });
   secondWindow.loadFile(path.join(__dirname, "ondex.html"));
 };
@@ -49,7 +50,7 @@ const createThirdWindow = () => {
   wc.once("dom-ready", () => {
     testthing
       .findAll()
-      .then((args) => wc.send("window3", args))
+      .then((args) => {wc.send("window3", args); console.log(args)})
       .catch((err) => console.log(err));
   });
 };
@@ -76,13 +77,19 @@ app.on("activate", () => {
 });
 // Database Handlers
 
-createTest = function (descr) {
+createTest = function (pregunta) {
+  console.log(pregunta)
   testthing
     .create({
-      desc: descr,
+      desc: pregunta.descripcion,
+      A: pregunta.A,
+      B: pregunta.B,
+      C: pregunta.C,
+      D: pregunta.D,
+      Respuesta: pregunta.Respuesta,
     })
     .then((result) => console.log(result))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err)); 
 };
 
 // In this file you can include the rest of your app's specific main process
@@ -108,11 +115,17 @@ ipcMain.on("database", function () {
     console.error("Unable to connect to the database:", error);
   }
 });
-ipcMain.on("editdatabase", (e, id, value) => {
+ipcMain.on("editdatabase", (e, id, pregunta) => {
   testthing
     .findByPk(id)
     .then((thing) => {
-      thing.desc = value;
+      console.log(pregunta)
+      thing.desc = pregunta.desc;
+      thing.A = pregunta.A
+      thing.B = pregunta.B
+      thing.C = pregunta.C
+      thing.D = pregunta.D
+      thing.Respuesta = pregunta.Respuesta
       return thing.save();
     })
     .then((result) => console.log(result))

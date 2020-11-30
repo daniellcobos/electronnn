@@ -8,9 +8,7 @@ tbutton = document.getElementById('test')
 
 cbutton.addEventListener('click', () => {
   const Question = makeQuestion(main.desc.value,main.A.value,main.B.value,main.C.value,main.D.value,main.Respuesta.value)
-  console.log(Question)
-  //value = document.getElementById('desc').value;
-  //ipcRenderer.send('form', fvalue)
+  ipcRenderer.send('form', Question)
   
 });
 
