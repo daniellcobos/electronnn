@@ -1,9 +1,13 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, Menu } = require("electron");
 const path = require("path");
 var ipc = require("electron").ipcRenderer;
 const Sequelize = require("sequelize");
 const sequelize = require("./database.js");
 const testthing = require("./models/testmodel");
+
+
+let Mainmenu = Menu.buildFromTemplate(require('./menu'))
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   // eslint-disable-line global-require
@@ -20,9 +24,15 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, "index.html"));
-
+  try{
+    sequelize.sync()
+  }
+  catch{
+    err => console.log(err)
+  }
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
+  Menu.setApplicationMenu(Mainmenu)
 };
 const createSecondWindow = () => {
   const mainw = BrowserWindow.fromId(1);
@@ -87,6 +97,7 @@ createTest = function (pregunta) {
       C: pregunta.C,
       D: pregunta.D,
       Respuesta: pregunta.Respuesta,
+      Categoria : pregunta.Categoria,
     })
     .then((result) => console.log(result))
     .catch((err) => console.log(err)); 
@@ -106,8 +117,8 @@ ipcMain.on("form", (e, args) => {
 ipcMain.on("database", function () {
   try {
     sequelize
-      .sync()
-      .then((result) => console.log("funciona" + result))
+      .sync({force: true})
+      .then((result) => console.log( result))
       .catch((error) =>
         console.error("Unable to connect to the database:", error)
       );
@@ -131,3 +142,4 @@ ipcMain.on("editdatabase", (e, id, pregunta) => {
     .then((result) => console.log(result))
     .catch((err) => console.log(err));
 });
+ipcMain.on("Prompt", (e,prompt) => {console.log(prompt)})

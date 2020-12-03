@@ -26,6 +26,10 @@ const testthing = sequelize.define("testthing", {
     type: Sequelize.CHAR,
     allowNull: false,
   },
+  Categoria: {
+    type: Sequelize.CHAR,
+    defaultValue: 'General',
+  },
 });
 
 module.exports = testthing;

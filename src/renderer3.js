@@ -3,7 +3,9 @@ let anything = {}
 tbutton = document.getElementById('caarga')
 maindiv = document.getElementById('main')
 
-ipcRenderer.on('window3', (e,args) => {renderer(args)} )
+ipcRenderer.on('window3', (e,args) => {
+  renderer(args)
+} )
 tbutton.addEventListener('click', () =>{
     renderer(this.anything)
   });
