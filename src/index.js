@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, Menu } = require("electron");
 const path = require("path");
 var ipc = require("electron").ipcRenderer;
 const Sequelize = require("sequelize");
-const sequelize = require("./database.js");
+const {sequelize,authDatabase} = require("./database.js");
 const testthing = require("./models/testmodel");
 
 
@@ -24,12 +24,6 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, "index.html"));
-  try{
-    sequelize.sync()
-  }
-  catch{
-    err => console.log(err)
-  }
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
   Menu.setApplicationMenu(Mainmenu)
@@ -58,6 +52,7 @@ const createThirdWindow = () => {
   wc = thirdWindow.webContents;
   thirdWindow.loadFile(path.join(__dirname, "undex.html"));
   wc.once("dom-ready", () => {
+    
     testthing
       .findAll()
       .then((args) => {wc.send("window3", args); console.log(args)})
@@ -115,6 +110,7 @@ ipcMain.on("form", (e, args) => {
   createTest(args);
 });
 ipcMain.on("database", function () {
+
   try {
     sequelize
       .sync({force: true})
@@ -140,6 +136,6 @@ ipcMain.on("editdatabase", (e, id, pregunta) => {
       return thing.save();
     })
     .then((result) => console.log(result))
-    .catch((err) => console.log(err));
+    .catch((err) => {console.log(err)});
 });
-ipcMain.on("Prompt", (e,prompt) => {console.log(prompt)})
+ipcMain.on("Prompt", (e,prompt) => {authDatabase(prompt.base,prompt.usuario,prompt.password,prompt.hosting)})
