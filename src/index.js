@@ -31,8 +31,8 @@ const createWindow = () => {
 const createSecondWindow = () => {
   const mainw = BrowserWindow.fromId(1);
   const secondWindow = new BrowserWindow({
-    width: 600,
-    height: 300,
+    width: 900,
+    height: 600,
     webPreferences: { nodeIntegration: true },
     parent: mainw,
     backgroundColor: "white",
@@ -93,6 +93,7 @@ createTest = function (pregunta) {
       D: pregunta.D,
       Respuesta: pregunta.Respuesta,
       Categoria : pregunta.Categoria,
+      Imagen: pregunta.Imagen,
     })
     .then((result) => console.log(result))
     .catch((err) => console.log(err)); 

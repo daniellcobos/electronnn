@@ -30,6 +30,10 @@ let testthing = sequelize.define("testthing", {
     type: Sequelize.CHAR,
     defaultValue: 'General',
   },
+  Imagen: {
+    type: Sequelize.BLOB('long'),
+    defaultValue: 'General',
+  },
 });
 
 module.exports = testthing;
