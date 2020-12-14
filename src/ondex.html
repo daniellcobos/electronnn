@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Read preguntas</title>
+    <link rel="stylesheet" type="text/css"  href="app.css">
 </head>
 <body>
     <div> <h1>Segunda Ventana</h1> </div>
@@ -19,25 +20,31 @@
         <input type="text" id="C" name="C" value="C"><br>
         <label for="desc">Respuesta D</label><br>
         <input type="text" id="D" name="D" value="D"><br>
-        <label for="Respuesta"> Seleccione la respuesta correcta</label>
-        <input type="radio" id="a" name="Respuesta" value="A">
-        <label for="male">A</label><br>
-        <input type="radio" id="b" name="Respuesta" value="B">
-        <label for="female">B</label><br>
-        <input type="radio" id="c" name="Respuesta" value="C">
-        <label for="other">C</label>
-        <input type="radio" id="d" name="Respuesta" value="D">
-        <label for="other">D</label>
-        <input type="radio" id="gen" name="Categoria" value="General">
-        <label for="other">General</label>
-        <input type="radio" id="urb" name="Categoria" value="Urbano">
-        <label for="other">Urbano</label>
-        <input type="radio" id="rur" name="Categoria" value="Rural">
-        <label for="other">Rural</label>
+        <div class="Respuesta">
+          <label for="Respuesta"> Seleccione la respuesta correcta</label><br/>
+          <input type="radio" id="a" name="Respuesta" value="A">
+          <label for="male">A</label><br/>
+          <input type="radio" id="b" name="Respuesta" value="B">
+          <label for="female">B</label><br/>
+          <input type="radio" id="c" name="Respuesta" value="C">
+          <label for="other">C</label><br/>
+          <input type="radio" id="d" name="Respuesta" value="D">
+          <label for="other">D</label>
+        </div>
+        <div class="Categoria">
+          <label for="Categoria">Seleccione la categoria</label><br/>
+          <input type="radio" id="gen" name="Categoria" value="General">
+          <label for="other">General</label><br/>
+          <input type="radio" id="urb" name="Categoria" value="Urbano">
+          <label for="other">Urbano</label><br/>
+          <input type="radio" id="rur" name="Categoria" value="Rural">
+          <label for="other">Rural</label><br/>
+        </div>
+        <label for="other">Seleccion imagen si desea anadir una</label>
         <input type="file" id="img" name="img" value="img" accept=".jpg, .jpeg, .png">
-        <label for="other">Imagen</label>
+        
       </form> 
-      <button id='charge'> Enviar </button>
+      
    
     <button id='test'> test </button>
 

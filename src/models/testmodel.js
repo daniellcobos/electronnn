@@ -31,7 +31,7 @@ let testthing = sequelize.define("testthing", {
     defaultValue: 'General',
   },
   Imagen: {
-    type: Sequelize.BLOB('long'),
+    type: Sequelize.STRING,
     defaultValue: 'General',
   },
 });

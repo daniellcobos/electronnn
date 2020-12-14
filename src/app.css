@@ -1,0 +1,21 @@
+.newbutton{
+    margin: 5px;
+}
+.qdiv{
+    box-shadow: 3px;
+    border: solid black 1px;
+    width: 75%;
+    margin-left: 1rem;
+}
+img{
+    display: block;
+    width: 75%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.Respuesta{
+    display: block;
+}
+.Categoria{
+    display: block;
+}

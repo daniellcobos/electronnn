@@ -17,7 +17,7 @@ const authDatabase = (base,user,pass,host) => {
     sequelize.connectionManager.config.password = pass
     sequelize.connectionManager.config.host = host
     sequelize.authenticate().then('conexion exitosa').catch(err => console.log(err))  
-    sequelize.sync()
+    sequelize.sync({force : true})
 }
 
 

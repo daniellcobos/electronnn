@@ -11,7 +11,7 @@ tbutton.addEventListener('click', () =>{
   });
 
   const renderer = (array) => {
-    console.log(array)
+    
     for (item of array) {
        const id = item.dataValues.id
        const desc = item.dataValues.desc
@@ -20,7 +20,9 @@ tbutton.addEventListener('click', () =>{
        const C = item.dataValues.C
        const D = item.dataValues.D
        const res = item.dataValues.Respuesta
+       const imagen = item.dataValues.Imagen
        const qdiv = document.createElement("div")
+       qdiv.className="qdiv"
        idp = document.createElement("p")
        descp = document.createElement("p")
        atext = document.createElement("p")
@@ -28,9 +30,12 @@ tbutton.addEventListener('click', () =>{
        ctext = document.createElement("p")
        dtext = document.createElement("p")
        resp = document.createElement("p")
+       img = document.createElement("img")
+       img.src = imagen
        newbutton = document.createElement("button")
        newbutton.innerText = "editar"
        newbutton.id = id
+       newbutton.className="newbutton"
        idp.innerText = 'Id: ' + id 
        descp.innerText = 'Descripcion: ' + desc
        atext.innerText = A
@@ -38,6 +43,7 @@ tbutton.addEventListener('click', () =>{
        ctext.innerText = C
        dtext.innerText = D
        resp.innerText = 'Respuesta correcta:' + res
+       
        qdiv.appendChild(idp)
        qdiv.appendChild(descp)
        qdiv.appendChild(atext)
@@ -45,7 +51,10 @@ tbutton.addEventListener('click', () =>{
        qdiv.appendChild(ctext)
        qdiv.appendChild(dtext)
        qdiv.appendChild(resp)
+       qdiv.appendChild(img)
        qdiv.appendChild(newbutton)
+
+       
        newbutton.addEventListener ('click', () => {newform(qdiv,id); newbutton.remove()}) 
        maindiv.appendChild(qdiv)
        

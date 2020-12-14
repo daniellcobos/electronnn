@@ -33,9 +33,10 @@ const createSecondWindow = () => {
   const secondWindow = new BrowserWindow({
     width: 900,
     height: 600,
-    webPreferences: { nodeIntegration: true },
+    webPreferences: { nodeIntegration: true,enableRemoteModule: true, },
     parent: mainw,
     backgroundColor: "white",
+    
   });
   secondWindow.loadFile(path.join(__dirname, "ondex.html"));
 };
@@ -43,8 +44,8 @@ const createSecondWindow = () => {
 const createThirdWindow = () => {
   const mainw = BrowserWindow.fromId(1);
   const thirdWindow = new BrowserWindow({
-    width: 800,
-    height: 400,
+    width: 1200,
+    height: 600,
     webPreferences: { nodeIntegration: true },
     parent: mainw,
     backgroundColor: "white",
