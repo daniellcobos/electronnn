@@ -7,8 +7,7 @@ const {basename} = require('path');
 const userpath = path.join(app.getPath('userData'),'images')
 let main = document.querySelector('form')
 cbutton = document.getElementById('charge')
-tbutton = document.getElementById('test')
-upbutton = document.getElementById('upload')
+
 
 cbutton.addEventListener('click', () => {
   if (!fs.existsSync(userpath)) {
@@ -22,10 +21,7 @@ cbutton.addEventListener('click', () => {
 });
 
 
-tbutton.addEventListener('click', () =>{
 
-  ipcRenderer.send('database')
-});
 
 const makeQuestion = (desc,a,b,c,d,rest,cat,img) => {
   const newQuestion = {

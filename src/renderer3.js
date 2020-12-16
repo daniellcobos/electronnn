@@ -6,9 +6,6 @@ maindiv = document.getElementById('main')
 ipcRenderer.on('window3', (e,args) => {
   renderer(args)
 } )
-tbutton.addEventListener('click', () =>{
-    renderer(this.anything)
-  });
 
   const renderer = (array) => {
     
@@ -33,15 +30,15 @@ tbutton.addEventListener('click', () =>{
        img = document.createElement("img")
        img.src = imagen
        newbutton = document.createElement("button")
-       newbutton.innerText = "editar"
+       newbutton.innerText = "Editar Pregunta"
        newbutton.id = id
        newbutton.className="newbutton"
        idp.innerText = 'Id: ' + id 
-       descp.innerText = 'Descripcion: ' + desc
-       atext.innerText = A
-       btext.innerText = B
-       ctext.innerText = C
-       dtext.innerText = D
+       descp.innerText = 'Enunciado: ' + desc
+       atext.innerText = 'Respuesta A: ' + A
+       btext.innerText = 'Respuesta B: ' + B
+       ctext.innerText = 'Respuesta C: ' + C
+       dtext.innerText = 'Respuesta D: ' + D
        resp.innerText = 'Respuesta correcta:' + res
        
        qdiv.appendChild(idp)
@@ -63,6 +60,7 @@ tbutton.addEventListener('click', () =>{
   const newform = (div,id) => {
 
     nform = document.createElement("form")
+    nform.className = "editform"
     var desc = document.createElement("input"); 
     desc.setAttribute("type", "text"); 
     desc.setAttribute("name", "desc"); 
