@@ -34,6 +34,7 @@ body   {
     margin-top: 2rem;
     font-size: 12px;
     padding-left: 1rem;
+    background-color: lightgray;
 }
 .editform{
     margin: 2px;
@@ -62,12 +63,29 @@ h1{
   }
   button{
     background-color: rgb(39, 38, 38);
+    border: solid 1px rgb(63, 62, 62);
     color: whitesmoke;
-    border: 0px;
     font-size: 16px;
     padding: 0.5rem;
     border-radius: 3px;
   }
 form{
     padding: 5px;
+}
+button:hover{
+  background-color:  rgb(63, 62, 62);
+}
+button:active{
+  background-color:  rgb(63, 62, 62);
+  border: solid 1px rgb(39, 38, 38);
+}
+.par{
+  background-color: lightgray;
+  margin: 0px;
+  padding: 1px;
+}
+.impar{
+  background-color: rgb(163, 163, 163);
+  margin: 0px;
+  padding: 2px;
 }
