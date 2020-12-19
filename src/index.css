@@ -1,0 +1,35 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: auto;
+  background-color:whitesmoke;
+}
+header{
+  background-color: rgb(39, 38, 38);
+  width: 100%;
+  height: 6rem;
+}
+header img {
+  max-height: 5rem;
+  margin: 5px;
+}
+main{
+  padding: 2rem;
+}
+h1{
+  margin: 0%;
+}
+button{
+  background-color: rgb(39, 38, 38);
+  color: whitesmoke;
+  font-size: 16px;
+  padding: 0.5rem;
+  border: solid 2px rgb(63, 62, 62);
+  border-radius: 3px;
+}
+button:hover{
+  background-color:  rgb(63, 62, 62);
+}
+button:active{
+  background-color:  rgb(63, 62, 62);
+  border: solid 1px rgb(39, 38, 38);
+}

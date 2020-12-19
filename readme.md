@@ -1,0 +1,1 @@
+Para Instalar este repositorio es necesario node.js, una vez instalado solo es necesario ejecutar el comando npm install en el directorio donde se encuentra el repositorio
