@@ -52,12 +52,12 @@ ipcRenderer.on('window3', (e,args) => {
        
        qdiv.appendChild(idp)
        qdiv.appendChild(descp)
+       qdiv.appendChild(img)
        qdiv.appendChild(atext)
        qdiv.appendChild(btext)
        qdiv.appendChild(ctext)
        qdiv.appendChild(dtext)
        qdiv.appendChild(resp)
-       qdiv.appendChild(img)
        qdiv.appendChild(newbutton)
 
        

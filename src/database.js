@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const {BrowserWindow}  = require('electron');
 const dialog = require('electron').dialog 
-const sequelize = new Sequelize('test','danielcobos','zekuensia123',{
+const sequelize = new Sequelize('test','postgres','postgres',{
       dialect:'postgres',
        host: 'localhost',
 })
@@ -20,7 +20,7 @@ const authDatabase = (base,user,pass,host) => {
     sequelize.connectionManager.config.host = host
    
         sequelize.authenticate()
-        .then( () => {sequelize.sync({force : true}, dialogs(true))})
+        .then( () => {sequelize.sync(), dialogs(true)})
         .catch( () => dialogs(false))
         
  

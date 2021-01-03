@@ -9,3 +9,11 @@ document.getElementById('addd').addEventListener('click', () => {
   ipcRenderer.send('windows2')
 
 });
+document.getElementById('urbano').addEventListener('click', () => {
+  ipcRenderer.send('windows3')
+
+});
+document.getElementById('rural').addEventListener('click', () => {
+  ipcRenderer.send('windows4')
+
+});

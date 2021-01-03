@@ -41,7 +41,7 @@ const createSecondWindow = () => {
   secondWindow.loadFile(path.join(__dirname, "ondex.html"));
 };
 
-const createThirdWindow = () => {
+const createThirdWindow = (cat) => {
   const mainw = BrowserWindow.fromId(1);
   const thirdWindow = new BrowserWindow({
     width: 1200,
@@ -55,7 +55,11 @@ const createThirdWindow = () => {
   wc.once("dom-ready", () => {
     
     testthing
-      .findAll()
+      .findAll( {
+        where: {
+          Categoria: cat
+        }
+      } )
       .then((args) => {wc.send("window3", args); console.log(args)})
       .catch((err) => console.log(err));
   });
@@ -97,7 +101,12 @@ createTest = function (pregunta) {
       Categoria : pregunta.Categoria,
       Imagen: pregunta.Imagen,
     })
-    .then((result) => console.log(result))
+    .then((result) => 
+    {
+      const window = BrowserWindow.getFocusedWindow()
+      window.close()
+    }
+    )
     .catch((err) => console.log(err)); 
 };
 
@@ -107,7 +116,13 @@ ipcMain.on("windows", function () {
   createSecondWindow();
 });
 ipcMain.on("windows2", function () {
-  createThirdWindow();
+  createThirdWindow("General");
+});
+ipcMain.on("windows3", function () {
+  createThirdWindow("Urbano");
+});
+ipcMain.on("windows4", function () {
+  createThirdWindow("Rural");
 });
 ipcMain.on("form", (e, args) => {
   createTest(args);
