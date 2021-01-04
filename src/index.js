@@ -64,7 +64,27 @@ const createThirdWindow = (cat) => {
       .catch((err) => console.log(err));
   });
 };
-
+const createGenerator = () => {
+  const mainw = BrowserWindow.fromId(1);
+  const fourthWindow = new BrowserWindow({
+    width: 1200,
+    height: 600,
+    webPreferences: { nodeIntegration: true },
+    parent: mainw,
+    backgroundColor: "white",
+  });
+  wc = fourthWindow.webContents;
+  fourthWindow.loadFile(path.join(__dirname, "examen.html"));
+  wc.once("dom-ready", () => {
+    const tests = []
+       testthing.findAll({where:{ Categoria: "General"}}).then(args => tests.push(args));
+      testthing.findAll({where:{ Categoria: "Rural"}}).then(args => tests.push(args));
+      testthing.findAll({where:{ Categoria: "Urbano"}}).then(args => tests.push(args));
+      setTimeout(() => {wc.send("generadorex",tests)} , 2000);
+   
+  }
+  );
+};
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -159,5 +179,7 @@ ipcMain.on("editdatabase", (e, id, pregunta) => {
 ipcMain.on("Prompt", (e,prompt) => {
   authDatabase(prompt.base,prompt.usuario,prompt.password,prompt.hosting)
 })
-
+ipcMain.on("generador", function () {
+  createGenerator();
+});
 

@@ -17,3 +17,7 @@ document.getElementById('rural').addEventListener('click', () => {
   ipcRenderer.send('windows4')
 
 });
+document.getElementById('generador').addEventListener('click', () => {
+  ipcRenderer.send('generador')
+
+});
