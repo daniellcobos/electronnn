@@ -12,6 +12,7 @@ ipcRenderer.on('window3', (e,args) => {
     for (item of array) {
        const id = item.dataValues.id
        const desc = item.dataValues.desc
+       const cont = item.dataValues.contexto
        const A = item.dataValues.A
        const B = item.dataValues.B
        const C = item.dataValues.C
@@ -23,6 +24,7 @@ ipcRenderer.on('window3', (e,args) => {
      
        idp = document.createElement("p")
        descp = document.createElement("p")
+       contxp = document.createElement("p")
        atext = document.createElement("p")
        btext = document.createElement("p")
        ctext = document.createElement("p")
@@ -32,18 +34,20 @@ ipcRenderer.on('window3', (e,args) => {
        img.src = imagen
        idp.className = "par"
        descp.className = "impar"
-       atext.className = "par"
-       btext.className = "impar"
-       ctext.className = "par"
-       dtext.className = "impar"
-       resp.className = "par"
-       img.className = "impar"
+       contxp.className = "par"
+       atext.className = "impar"
+       btext.className = "par"
+       ctext.className = "impar"
+       dtext.className = "par"
+       resp.className = "impar"
+       img.className = "par"
        newbutton = document.createElement("button")
        newbutton.innerText = "Editar Pregunta"
        newbutton.id = id
        newbutton.className="newbutton"
        idp.innerText = 'Id: ' + id 
        descp.innerText = 'Enunciado: ' + desc
+       contxp.innerText = 'Contexto: ' + cont
        atext.innerText = 'Respuesta A: ' + A
        btext.innerText = 'Respuesta B: ' + B
        ctext.innerText = 'Respuesta C: ' + C
@@ -52,6 +56,7 @@ ipcRenderer.on('window3', (e,args) => {
        
        qdiv.appendChild(idp)
        qdiv.appendChild(descp)
+       qdiv.appendChild(contxp)
        qdiv.appendChild(img)
        qdiv.appendChild(atext)
        qdiv.appendChild(btext)
@@ -73,7 +78,11 @@ ipcRenderer.on('window3', (e,args) => {
     var desc = document.createElement("input"); 
     desc.setAttribute("type", "text"); 
     desc.setAttribute("name", "desc"); 
-    desc.setAttribute("placeholder", "Nueva descripcion"); 
+    desc.setAttribute("placeholder", "Nueva descripcion");
+    var contx = document.createElement("input"); 
+    contx.setAttribute("type", "text"); 
+    contx.setAttribute("name", "cont"); 
+    contx.setAttribute("placeholder", "Nuevo Contexto"); 
     var a = document.createElement("input"); 
     a.setAttribute("type", "text"); 
     a.setAttribute("name", "a"); 
@@ -97,6 +106,7 @@ ipcRenderer.on('window3', (e,args) => {
     newbutton2 = document.createElement("button")
     newbutton2.innerText = "enviar"
     nform.appendChild(desc)
+    nform.appendChild(contx)
     nform.appendChild(a)
     nform.appendChild(b)
     nform.appendChild(c)
@@ -108,6 +118,7 @@ ipcRenderer.on('window3', (e,args) => {
     newbutton2.addEventListener ('click', () => {
       const pregunta = {
         desc: desc.value,
+        contexto:contx.value,
         A: a.value,
         B: b.value,
         C: c.value,

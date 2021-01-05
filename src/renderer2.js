@@ -15,7 +15,18 @@ cbutton.addEventListener('click', () => {
   }
   const image = main.img.files[0]
   getImage(image.path)
-  const Question = makeQuestion(main.desc.value,main.A.value,main.B.value,main.C.value,main.D.value,main.Respuesta.value,main.Categoria.value,getImage(main.img.files[0].path))
+  const Question = makeQuestion(
+    main.typeimg.value,
+    main.desc.value,
+    main.cont.value,
+    main.A.value,
+    main.B.value,
+    main.C.value,
+    main.D.value,
+    main.Respuesta.value,
+    main.Categoria.value,
+    getImage(main.img.files[0].path)
+    )
   ipcRenderer.send('form', Question)
  
 });
@@ -23,9 +34,11 @@ cbutton.addEventListener('click', () => {
 
 
 
-const makeQuestion = (desc,a,b,c,d,rest,cat,img) => {
+const makeQuestion = (timg,desc,contx,a,b,c,d,rest,cat,img) => {
   const newQuestion = {
+    typeimg: timg,
     descripcion: desc,
+    contexto: contx,
     A: a,
     B: b,
     C: c,

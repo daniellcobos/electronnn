@@ -6,6 +6,15 @@ let testthing = sequelize.define("testthing", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  contexto: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  multimagen: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
   A: {
     type: Sequelize.STRING,
     allowNull: false,

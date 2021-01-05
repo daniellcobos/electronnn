@@ -23,7 +23,18 @@ createpromptwindow = () => {
     promptWindow.loadFile(path.join(__dirname, "prompt.html"));
 }
 
-
+forceDatabase = () => {
+  try {
+    sequelize
+      .sync({force: true})
+      .then((result) => console.log( result))
+      .catch((error) =>
+        console.error("Unable to connect to the database:", error)
+      );
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+}
 module.exports = [
     // { role: 'appMenu' }
     {
@@ -45,7 +56,8 @@ module.exports = [
       label: 'Base de Datos',
        submenu: [
            {label: 'Entrar a Base de Datos', click: () => createpromptwindow()},
-           {label: 'Salir de Base de Datos', click: () => closedatabase()}
+           {label: 'Salir de Base de Datos', click: () => closedatabase()},
+           {label: 'Reiniciar Base de datos (PELIGROSO)', click: () => forceDatabase()},
        ]
     },
     // { role: 'editMenu' }

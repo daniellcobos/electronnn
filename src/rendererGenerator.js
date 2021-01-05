@@ -29,6 +29,12 @@ function shuffleArray(array) {
 }
 
 renderModule = (module) => {
+    cat = module[0].dataValues.Categoria;
+    const modulediv = document.createElement("div");
+    modulediv.className = cat;
+    const moduleTitle = document.createElement("h1");
+    moduleTitle.innerText = "Modulo: " + cat;
+    modulediv.appendChild(moduleTitle)
     for (question of module) {
         const id = question.dataValues.id
         const desc = question.dataValues.desc
@@ -58,7 +64,7 @@ renderModule = (module) => {
         dtext.className = "impar"
         resp.className = "par"
         img.className = "impar"
-        newbutton = document.createElement("button")
+        const newbutton = document.createElement("button")
         newbutton.innerText = "Cambiar Pregunta"
         newbutton.id = id
         newbutton.className="newbutton"
@@ -82,8 +88,9 @@ renderModule = (module) => {
  
         
         newbutton.addEventListener ('click', () => { newbutton.remove()}) 
-        main.appendChild(qdiv)
+        modulediv.appendChild(qdiv)
     }
+    main.appendChild(modulediv)
 }
 
 generateExam= () => {

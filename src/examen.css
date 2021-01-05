@@ -1,0 +1,95 @@
+html{
+    margin: 0;
+    padding: 0;
+}
+body   {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 0;
+    margin: 0 !important;
+ }
+ header{
+    background-color: rgb(39, 38, 38);
+    width: 100%;
+    height: 6rem;
+    margin-top: 0;
+    padding-top: 5px;
+  }
+  header img {
+    max-height: 5rem;
+    margin: 5px;
+  }
+  main{
+    padding: 2rem;
+    background-color: whitesmoke;
+  }
+
+.newbutton{
+    margin: 5px;
+}
+.qdiv{
+    
+    width: 75%;
+    margin-left: 1rem;
+    margin-top: 2rem;
+    font-size: 12px;
+    padding-left: 1rem;
+    
+}
+.editform{
+    margin: 2px;
+    box-shadow: 5px;
+}
+img{
+    display: block;
+    max-width: 75%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-height: 400px;
+   
+}
+.Respuesta{
+    display: block;
+    margin-top: 3px;
+}
+input{
+    margin-bottom: 2px;
+}
+.Categoria{
+    display: block;
+}
+h1{
+    margin: 0%;
+  }
+  button{
+    background-color: rgb(39, 38, 38);
+    border: solid 1px rgb(63, 62, 62);
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 0.5rem;
+    border-radius: 3px;
+  }
+form{
+    padding: 5px;
+}
+button:hover{
+  background-color:  rgb(63, 62, 62);
+}
+button:active{
+  background-color:  rgb(63, 62, 62);
+  border: solid 1px rgb(39, 38, 38);
+}
+.General{
+    box-shadow: 3px;
+    border: solid black 1px;
+    background-color: lightgray;
+}
+.Urbano{
+    box-shadow: 3px;
+    border: solid black 1px;
+    background-color: lightgreen;
+}
+.Rural{
+    box-shadow: 3px;
+    border: solid black 1px;
+    background-color: lightblue;
+}

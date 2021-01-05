@@ -112,7 +112,9 @@ createTest = function (pregunta) {
   console.log(pregunta)
   testthing
     .create({
+      typeimg: pregunta.typeimg,
       desc: pregunta.descripcion,
+      contexto: pregunta.contexto,
       A: pregunta.A,
       B: pregunta.B,
       C: pregunta.C,
@@ -164,13 +166,14 @@ ipcMain.on("editdatabase", (e, id, pregunta) => {
   testthing
     .findByPk(id)
     .then((thing) => {
-      console.log(pregunta)
-      thing.desc = pregunta.desc;
-      thing.A = pregunta.A
-      thing.B = pregunta.B
-      thing.C = pregunta.C
-      thing.D = pregunta.D
-      thing.Respuesta = pregunta.Respuesta
+  
+      thing.desc = pregunta.desc ? pregunta.desc: thing.desc;
+      thing.contexto = pregunta.contexto ? pregunta.contexto : thing.contexto;
+      thing.A = pregunta.A ? pregunta.A : thing.A;
+      thing.B = pregunta.B ? pregunta.B : thing.B;
+      thing.C = pregunta.C ? pregunta.C : thing.C;
+      thing.D = pregunta.D ? pregunta.D : thing.D;
+      thing.Respuesta = pregunta.Respuesta ? pregunta.Respuesta : thing.Respuesta;
       return thing.save();
     })
     .then((result) => console.log(result))
