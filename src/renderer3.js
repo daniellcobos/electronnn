@@ -4,12 +4,26 @@ tbutton = document.getElementById('caarga')
 maindiv = document.getElementById('main')
 
 ipcRenderer.on('window3', (e,args) => {
-  renderer(args)
+  dynaRender(args)
 } )
-
-  const renderer = (array) => {
+  const dynaRender = (arr) => {
     
-    for (item of array) {
+    for (item of arr) {
+      const typeimg = item.dataValues.multimagen
+    if (typeimg){
+      imgRenderer(item)
+    }
+    else{
+      renderer(item)
+    }
+    }
+    
+  }
+
+
+  const renderer = (item) => {
+    
+    
        const id = item.dataValues.id
        const desc = item.dataValues.desc
        const cont = item.dataValues.contexto
@@ -69,7 +83,85 @@ ipcRenderer.on('window3', (e,args) => {
        newbutton.addEventListener ('click', () => {newform(qdiv,id); newbutton.remove()}) 
        maindiv.appendChild(qdiv)
        
-    } 
+    
+   }
+   const imgRenderer = (item) => {
+    
+    
+       const id = item.dataValues.id
+       const desc = item.dataValues.desc
+       const cont = item.dataValues.contexto
+       const A = item.dataValues.A
+       const B = item.dataValues.B
+       const C = item.dataValues.C
+       const D = item.dataValues.D
+       const res = item.dataValues.Respuesta
+       const imagen = item.dataValues.Imagen
+       const qdiv = document.createElement("div")
+       qdiv.className="qdiv"
+     
+       idp = document.createElement("p")
+       descp = document.createElement("p")
+       contxp = document.createElement("p")
+       atext = document.createElement("p")
+       btext = document.createElement("p")
+       ctext = document.createElement("p")
+       dtext = document.createElement("p")
+       aimg = document.createElement("img")
+       bimg = document.createElement("img")
+       cimg = document.createElement("img")
+       dimg = document.createElement("img")
+       resp = document.createElement("p")
+       img = document.createElement("img")
+       img.src = imagen
+       aimg.src = A
+       bimg.src = B
+       cimg.src = C
+       dimg.src = D
+       idp.className = "par"
+       descp.className = "impar"
+       contxp.className = "par"
+       aimg.className = "resimg"
+       bimg.className = "resimg"
+       cimg.className = "resimg"
+       dimg.className = "resimg"
+       atext.className = "impar"
+       btext.className = "impar"
+       ctext.className = "impar"
+       dtext.className = "impar"
+       resp.className = "impar"
+       img.className = "par"
+       newbutton = document.createElement("button")
+       newbutton.innerText = "Editar Pregunta"
+       newbutton.id = id
+       newbutton.className="newbutton"
+       idp.innerText = 'Id: ' + id 
+       descp.innerText = 'Enunciado: ' + desc
+       contxp.innerText = 'Contexto: ' + cont
+       resp.innerText = 'Respuesta correcta:' + res
+       atext.innerText = 'Respuesta A: ' 
+       btext.innerText = 'Respuesta B: ' 
+       ctext.innerText = 'Respuesta C: ' 
+       dtext.innerText = 'Respuesta D: ' 
+
+       qdiv.appendChild(idp)
+       qdiv.appendChild(descp)
+       qdiv.appendChild(contxp)
+       qdiv.appendChild(img)
+       qdiv.appendChild(atext)
+       qdiv.appendChild(aimg)
+       qdiv.appendChild(btext)
+       qdiv.appendChild(bimg)
+       qdiv.appendChild(ctext)
+       qdiv.appendChild(cimg)
+       qdiv.appendChild(dtext)
+       qdiv.appendChild(dimg)
+       qdiv.appendChild(resp)
+       qdiv.appendChild(newbutton)
+
+       
+       newbutton.addEventListener ('click', () => {newform(qdiv,id); newbutton.remove()}) 
+       maindiv.appendChild(qdiv)
    }
   const newform = (div,id) => {
 

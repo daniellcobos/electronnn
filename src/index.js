@@ -28,6 +28,7 @@ const createWindow = () => {
   // mainWindow.webContents.openDevTools();
   Menu.setApplicationMenu(Mainmenu)
 };
+
 const createSecondWindow = () => {
   const mainw = BrowserWindow.fromId(1);
   const secondWindow = new BrowserWindow({
@@ -39,6 +40,19 @@ const createSecondWindow = () => {
     
   });
   secondWindow.loadFile(path.join(__dirname, "ondex.html"));
+};
+
+const createSecondImgWindow = () => {
+  const mainw = BrowserWindow.fromId(1);
+  const secondWindow = new BrowserWindow({
+    width: 1000,
+    height: 700,
+    webPreferences: { nodeIntegration: true,enableRemoteModule: true, },
+    parent: mainw,
+    backgroundColor: "white",
+    
+  });
+  secondWindow.loadFile(path.join(__dirname, "createqimg.html"));
 };
 
 const createThirdWindow = (cat) => {
@@ -112,7 +126,7 @@ createTest = function (pregunta) {
   console.log(pregunta)
   testthing
     .create({
-      typeimg: pregunta.typeimg,
+      multimagen: pregunta.typeimg,
       desc: pregunta.descripcion,
       contexto: pregunta.contexto,
       A: pregunta.A,
@@ -137,6 +151,9 @@ createTest = function (pregunta) {
 ipcMain.on("windows", function () {
   createSecondWindow();
 });
+ipcMain.on("windowimg", function () {
+  createSecondImgWindow();
+});
 ipcMain.on("windows2", function () {
   createThirdWindow("General");
 });
@@ -147,6 +164,9 @@ ipcMain.on("windows4", function () {
   createThirdWindow("Rural");
 });
 ipcMain.on("form", (e, args) => {
+  createTest(args);
+});
+ipcMain.on("formImg", (e, args) => {
   createTest(args);
 });
 ipcMain.on("database", function () {

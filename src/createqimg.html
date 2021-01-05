@@ -14,19 +14,19 @@
       <div> <h1>Creacion de Preguntas</h1> </div>
     
     <form>
-        
+       
         <label for="desc">Descripcion</label><br>
         <input type="text" id="desc" name="desc" value="Desc"><br>
         <label for="cont">Contexto</label><br>
         <input type="text" id="cont" name="cont" value="Arhhc"><br>
         <label for="desc">Respuesta A</label><br>
-        <input type="text" id="A" name="A" value="A"><br>
+        <input type="file" id="img" name="A" value="A" accept=".jpg, .jpeg, .png"><br>
         <label for="desc">Respuesta B</label><br>
-        <input type="text" id="B" name="B" value="B"><br>
+        <input type="file" id="img" name="B" value="B" accept=".jpg, .jpeg, .png"><br>
         <label for="desc">Respuesta C</label><br>
-        <input type="text" id="C" name="C" value="C"><br>
+        <input type="file" id="img" name="C" value="C" accept=".jpg, .jpeg, .png"><br>
         <label for="desc">Respuesta D</label><br>
-        <input type="text" id="D" name="D" value="D"><br>
+        <input type="file" id="img" name="D" value="D" accept=".jpg, .jpeg, .png"><br>
         <div class="Respuesta">
           <label for="Respuesta"> Seleccione la respuesta correcta</label><br/>
           <input type="radio" id="a" name="Respuesta" value="A">
@@ -52,7 +52,7 @@
           <label for="other">Maquinarias</label><br/>
         </div>
         <label for="other">Seleccion imagen si desea anadir una</label>
-        <input type="file" id="img" name="img" value="img" accept=".jpg, .jpeg, .png">
+        <input type="file" id="imgn" name="imgn" value="imgn" accept=".jpg, .jpeg, .png">
         
       </form> 
       
@@ -63,7 +63,7 @@
 
     <script>
         // You can also require other files to run in this process
-        require('./renderer2.js')
+        require('./imageQuestionCreator.js')
       </script>
 </body>
 </html>

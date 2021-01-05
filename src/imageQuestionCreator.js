@@ -10,24 +10,23 @@ cbutton = document.getElementById('charge')
 
 
 cbutton.addEventListener('click', () => {
+    
   if (!fs.existsSync(userpath)) {
     fs.mkdir(userpath, err => console.log(err))
   }
-  const image = main.img.files[0]
-  getImage(image.path)
   const Question = makeQuestion(
-    
+   
     main.desc.value,
     main.cont.value,
-    main.A.value,
-    main.B.value,
-    main.C.value,
-    main.D.value,
+    getImage(main.A.files[0].path),
+    getImage(main.B.files[0].path),
+    getImage(main.C.files[0].path),
+    getImage(main.D.files[0].path),
     main.Respuesta.value,
     main.Categoria.value,
-    getImage(main.img.files[0].path)
+    getImage(main.imgn.files[0].path)
     )
-  ipcRenderer.send('form', Question)
+  ipcRenderer.send('formImg', Question)
  
 });
 
@@ -36,7 +35,7 @@ cbutton.addEventListener('click', () => {
 
 const makeQuestion = (desc,contx,a,b,c,d,rest,cat,img) => {
   const newQuestion = {
-    typeimg: false,
+    typeimg: true,
     descripcion: desc,
     contexto: contx,
     A: a,

@@ -9,6 +9,10 @@ document.getElementById('addd').addEventListener('click', () => {
   ipcRenderer.send('windows2')
 
 });
+document.getElementById('addimg').addEventListener('click', () => {
+  ipcRenderer.send('windowimg')
+
+});
 document.getElementById('urbano').addEventListener('click', () => {
   ipcRenderer.send('windows3')
 
